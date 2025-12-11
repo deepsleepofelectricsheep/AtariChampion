@@ -5,7 +5,7 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
-    "gymnasium>=1.0.0",
-    "ale-py>=0.8.0",
+    "gymnasium",
+    "ale-py",
     "autorom[accept-rom-license]"
 ]

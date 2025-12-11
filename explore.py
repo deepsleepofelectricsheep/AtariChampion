@@ -1,12 +1,25 @@
 import gymnasium as gym
-env = gym.make("ALE/Boxing-v5", render_mode="human")
-observation, info = env.reset()
+import ale_py
+
+
+gym.register_envs(ale_py)
+env = gym.make('ALE/Boxing-v5', render_mode='human') 
+env.reset()
+
+# Enable screen display and sound output
+ale = ale_py.ALEInterface()
+ale.setBool('display_screen', True)
+ale.setBool('sound', True)
 
 for _ in range(1000):
-    action = env.action_space.sample()  # agent policy that uses the observation and info
-    observation, reward, terminated, truncated, info = env.step(action)
+    action = env.action_space.sample()
+    print(env.action_space)
+
+    obs, reward, terminated, truncated, info = env.step(action)
 
     if terminated or truncated:
-        observation, info = env.reset()
+        obs, info = env.reset()
+        
+    break
 
 env.close()
