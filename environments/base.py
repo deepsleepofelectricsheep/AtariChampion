@@ -29,3 +29,6 @@ class AtariMDP:
     def transition(self, action: Any) -> Tuple[np.ndarray, float, bool]:
         obs, reward, terminated, truncated, info = self.env.step(action)
         return obs, reward, terminated
+    
+    def close(self) -> None:
+        self.env.close()
